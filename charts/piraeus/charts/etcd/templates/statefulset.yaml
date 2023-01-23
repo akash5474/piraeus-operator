@@ -103,6 +103,8 @@ spec:
           value: "true"
         - name: ETCD_TRUSTED_CA_FILE
           value: "/opt/etcd/certs/client/ca.crt"
+        - name: ETCD_UNSUPPORTED_ARCH
+          value: "arm64"
         {{- end }}
         {{- end }}
 {{- if .Values.extraEnv }}
