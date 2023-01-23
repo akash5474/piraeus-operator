@@ -81,6 +81,8 @@ spec:
           value: {{ .Values.replicas | quote }}
         - name: SET_NAME
           value: {{ template "etcd.fullname" . }}
+        - name: ETCD_UNSUPPORTED_ARCH
+          value: "arm64"
         {{- if and .Values.auth.peer.secureTransport }}
         - name: ETCD_PEER_CERT_FILE
           value: "/opt/etcd/certs/peer/tls.crt"
@@ -103,8 +105,6 @@ spec:
           value: "true"
         - name: ETCD_TRUSTED_CA_FILE
           value: "/opt/etcd/certs/client/ca.crt"
-        - name: ETCD_UNSUPPORTED_ARCH
-          value: "arm64"
         {{- end }}
         {{- end }}
 {{- if .Values.extraEnv }}
